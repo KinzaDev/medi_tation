@@ -12,7 +12,7 @@ class MeditationApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SigninSignupPage(), // 👈 call your page here
+      home: SigninSignupPage(), //  call your page here
     );
   }
 }
