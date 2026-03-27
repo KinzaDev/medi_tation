@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi/auth/sign_up.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -26,7 +27,7 @@ class SignInPage extends StatelessWidget {
             top: screenHeight * 0.21,
             left: 0,
             child: SizedBox(
-              width: 130,
+              width: 160,
               child: Image.asset('assets/images/curve1.png', fit: BoxFit.contain),
             ),
           ),
@@ -142,7 +143,12 @@ class SignInPage extends StatelessWidget {
                           style: TextStyle(color: Color(0xFFA1A4B2), fontSize: 12),
                         ),
                         GestureDetector(
-                          onTap: () => Navigator.pop(context),
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpPage(),
+                            ),
+                          ),
                           child: const Text(
                             "SIGN UP",
                             style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi/auth/sign_up.dart';
 import 'sign_in.dart'; // Ensure this file exists in the same folder
 
 void main() {
@@ -102,7 +103,7 @@ class SigninSignupPage extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const SignInPage(),
+                                      builder: (context) => const SignUpPage(),
                                     ),
                                   );
                                 },
