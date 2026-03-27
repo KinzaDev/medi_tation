@@ -181,6 +181,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   // GET STARTED BUTTON
                   SizedBox(
+                    width: double.infinity,
                     height: 60,
                     child: ElevatedButton(
                       onPressed: () {},
