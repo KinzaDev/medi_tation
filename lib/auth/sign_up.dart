@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:medi/screens/welcome.dart';
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -9,6 +9,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool isChecked = false;
+  bool _isPasswordVisible = false; // Password show/hide control karne ke liye
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +25,28 @@ class _SignUpPageState extends State<SignUpPage> {
             left: 0,
             right: 0,
             height: screenHeight * 0.42,
-            child: Image.asset('assets/images/curves.png', fit: BoxFit.contain),
+            child: Image.asset(
+              'assets/images/curves.png',
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => const SizedBox(),
+            ),
           ),
 
-          /// 2. SIDE CURVE (Left side wali curve)
+          /// 2. SIDE CURVE
           Positioned(
             top: screenHeight * 0.21,
             left: 0,
             child: SizedBox(
               width: 140,
-              child: Image.asset('assets/images/curve1.png', fit: BoxFit.contain),
+              child: Image.asset(
+                'assets/images/curve1.png',
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => const SizedBox(),
+              ),
             ),
           ),
 
-          /// 3. MAIN CONTENT (Scrollable)
+          /// 3. MAIN CONTENT
           SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -72,59 +81,63 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   const SizedBox(height: 35),
 
-                  // FACEBOOK BUTTON
-                  Container(
+                  // FACEBOOK BUTTON (ElevatedButton)
+                  SizedBox(
+                    width: double.infinity,
                     height: 60,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7583CA),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 25),
-
-                        Image.asset('assets/images/Vector.png', height: 25, color: Colors.white),
-                        const Expanded(
-                          child: Center(
-                            child: Text(
-                              "CONTINUE WITH FACEBOOK",
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
-                            ),
+                    child: ElevatedButton.icon(
+                      onPressed: () => debugPrint("Facebook Clicked"),
+                      icon: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Image.asset('assets/images/Vector.png', height: 25, color: Colors.white,
+                            errorBuilder: (c, e, s) => const Icon(Icons.facebook, color: Colors.white)),
+                      ),
+                      label: const Expanded(
+                        child: Center(
+                          child: Text(
+                            "CONTINUE WITH FACEBOOK",
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
                           ),
                         ),
-                        const SizedBox(width: 40),
-                      ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF7583CA),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                        elevation: 0,
+                      ),
                     ),
                   ),
 
-
                   const SizedBox(height: 15),
 
-                  // GOOGLE BUTTON
-                  Container(
-
+                  // GOOGLE BUTTON (ElevatedButton)
+                  SizedBox(
+                    width: double.infinity,
                     height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color:Color(0xFFA3A5B2)),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 25),
-                        Image.asset('assets/images/google.png', height: 25),
-                        const Expanded(
-                          child: Center(
-                            child: Text(
-                              "CONTINUE WITH GOOGLE",
-                              style: TextStyle(color: Color(0xFF3F414E), fontWeight: FontWeight.bold, fontSize: 13),
-                            ),
-
+                    child: ElevatedButton.icon(
+                      onPressed: () => debugPrint("Google Clicked"),
+                      icon: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Image.asset('assets/images/google.png', height: 25,
+                            errorBuilder: (c, e, s) => const Icon(Icons.g_mobiledata, color: Colors.red, size: 30)),
+                      ),
+                      label: const Expanded(
+                        child: Center(
+                          child: Text(
+                            "CONTINUE WITH GOOGLE",
+                            style: TextStyle(color: Color(0xFF3F414E), fontWeight: FontWeight.bold, fontSize: 13),
                           ),
-
                         ),
-                        const SizedBox(width: 50),
-                      ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.grey.shade300,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          side: const BorderSide(color: Color(0xFFA3A5B2)),
+                        ),
+                        elevation: 0,
+                      ),
                     ),
                   ),
 
@@ -135,24 +148,23 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   const SizedBox(height: 30),
 
-                  // NAME INPUT
-                  _customTextField(hint: "afsar", icon: Icons.check, iconColor: Colors.green),
+                  _customTextField(hint: "Name", icon: Icons.check, iconColor: Colors.green),
+                  const SizedBox(height: 15),
+                  _customTextField(hint: "Email address", icon: Icons.check, iconColor: Colors.green),
                   const SizedBox(height: 15),
 
-                  // EMAIL INPUT
-                  _customTextField(hint: "imshuvo97@gmail.com", icon: Icons.check, iconColor: Colors.green),
-                  const SizedBox(height: 15),
-
-                  // PASSWORD INPUT
-                  _customTextField(hint: "●●●●●●●●●", icon: Icons.visibility_off_outlined, isPassword: true),
+                  _customTextField(
+                    hint: "Password",
+                    icon: Icons.visibility_off_outlined,
+                    isPassword: true,
+                  ),
 
                   const SizedBox(height: 20),
-
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text.rich(
+                      const Text.rich(
                         TextSpan(
                           text: "i have read the ",
                           style: TextStyle(color: Colors.grey, fontSize: 14),
@@ -166,25 +178,30 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Checkbox(
                         value: isChecked,
-                        activeColor: Color(0xFF7583CA),
+                        activeColor: const Color(0xFF7583CA),
                         onChanged: (bool? value) {
                           setState(() {
                             isChecked = value!;
                           });
                         },
-                        side:BorderSide(color: Colors.grey),
+                        side: const BorderSide(color: Colors.grey),
                       ),
                     ],
                   ),
 
-                   SizedBox(height: 30),
+                  const SizedBox(height: 30),
 
-                  // GET STARTED BUTTON
                   SizedBox(
                     width: double.infinity,
                     height: 60,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Welcome()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF8E97FD),
                         elevation: 0,
@@ -206,15 +223,35 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-
-  Widget _customTextField({required String hint, required IconData icon, Color iconColor = Colors.grey, bool isPassword = false}) {
+  Widget _customTextField({
+    required String hint,
+    required IconData icon,
+    Color iconColor = Colors.grey,
+    bool isPassword = false,
+  }) {
     return TextField(
-      obscureText: isPassword,
+
+      obscureText: isPassword ? !_isPasswordVisible : false,
       decoration: InputDecoration(
         hintText: hint,
         filled: true,
         fillColor: const Color(0xFFF2F3F7),
-        suffixIcon: Icon(icon, color: iconColor),
+
+
+        suffixIcon: isPassword
+            ? IconButton(
+          icon: Icon(
+            _isPasswordVisible ? Icons.visibility : Icons.visibility_off_outlined,
+            color: Colors.grey,
+          ),
+          onPressed: () {
+            setState(() {
+              _isPasswordVisible = !_isPasswordVisible;
+            });
+          },
+        )
+            : Icon(icon, color: iconColor),
+
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide.none,

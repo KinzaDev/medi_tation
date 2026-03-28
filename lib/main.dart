@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../auth/signin_signup.dart';
+import 'auth/signin_signup.dart';
 
 void main() {
   runApp(const MeditationApp());
