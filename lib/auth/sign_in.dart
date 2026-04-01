@@ -10,10 +10,10 @@ class SignInPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      // Using Stack to keep curves fixed while content scrolls
+
       body: Stack(
         children: [
-          /// 1. Top Curves (Fixed Background)
+
           Positioned(
             top: 0,
             left: 0,
@@ -22,7 +22,7 @@ class SignInPage extends StatelessWidget {
             child: Image.asset('assets/images/curves.png', fit: BoxFit.fill),
           ),
 
-          /// 2. Curve1 - Positioned further down and to the left
+
           Positioned(
             top: screenHeight * 0.21,
             left: 0,
@@ -32,7 +32,7 @@ class SignInPage extends StatelessWidget {
             ),
           ),
 
-          /// 3. Scrollable Content
+
           SafeArea(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -41,7 +41,7 @@ class SignInPage extends StatelessWidget {
                 children: [
                   const SizedBox(height: 10),
 
-                  // Back Button
+
                   Align(
                     alignment: Alignment.centerLeft,
                     child: IconButton(
@@ -66,7 +66,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 35),
 
-                  // Facebook Button - Icon on Left, Text Centered
+
                   _buildSocialButton(
                     label: "      CONTINUE WITH FACEBOOK",
                     color: const Color(0xFF7583CA),
@@ -77,7 +77,7 @@ class SignInPage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // Google Button - Icon on Left, Text Centered
+
                   _buildSocialButton(
                     label: "      CONTINUE WITH GOOGLE",
                     color: Colors.white,
@@ -98,14 +98,14 @@ class SignInPage extends StatelessWidget {
 
                   const SizedBox(height: 30),
 
-                  // Input Fields
+
                   _buildTextField("Email address"),
                   const SizedBox(height: 20),
                   _buildTextField("Password", isPass: true),
 
                   const SizedBox(height: 30),
 
-                  // Login Button
+
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
@@ -132,7 +132,7 @@ class SignInPage extends StatelessWidget {
 
                   const SizedBox(height: 40),
 
-                  // Bottom Link
+
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Row(
@@ -170,7 +170,7 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  // Improved Social Button Helper
+
   Widget _buildSocialButton({
     required String label,
     required Color color,
@@ -189,7 +189,7 @@ class SignInPage extends StatelessWidget {
         side: hasBorder ? const BorderSide(color: Color(0xFFEBEAEA)) : null,
         elevation: 0,
       ),
-      child: Stack( // Using Stack inside the button to fix Icon position
+      child: Stack(
         children: [
           Align(
             alignment: Alignment.centerLeft,

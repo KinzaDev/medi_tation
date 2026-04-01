@@ -9,7 +9,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool isChecked = false;
-  bool _isPasswordVisible = false; // Password show/hide control karne ke liye
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _SignUpPageState extends State<SignUpPage> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          /// 1. TOP BACKGROUND CURVES
+
           Positioned(
             top: 0,
             left: 0,
@@ -32,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
 
-          /// 2. SIDE CURVE
+
           Positioned(
             top: screenHeight * 0.21,
             left: 0,
@@ -46,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
 
-          /// 3. MAIN CONTENT
+
           SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -54,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: [
                   const SizedBox(height: 10),
 
-                  // BACK BUTTON
+
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -81,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   const SizedBox(height: 35),
 
-                  // FACEBOOK BUTTON (ElevatedButton)
+
                   SizedBox(
                     width: double.infinity,
                     height: 60,
@@ -110,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   const SizedBox(height: 15),
 
-                  // GOOGLE BUTTON (ElevatedButton)
+
                   SizedBox(
                     width: double.infinity,
                     height: 60,

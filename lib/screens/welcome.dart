@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:medi/screens/choose_topic.dart';
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
 
@@ -60,18 +60,18 @@ class Welcome extends StatelessWidget {
 
             const Spacer(),
 
-            // --- STACK USED HERE TO PUT BUTTON OVER IMAGE ---
+
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                // 1. Background Image
+
                 Image.asset(
                   'assets/images/welcome_page.png',
                   fit: BoxFit.contain,
                   width: MediaQuery.of(context).size.width,
                 ),
 
-                // 2. Button (Aligned slightly above the bottom)
+
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
                   child: SizedBox(
@@ -86,7 +86,14 @@ class Welcome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChooseTopic(),
+                          ),
+                        );
+                      },
                       child: const Text(
                         "GET STARTED",
                         style: TextStyle(

@@ -23,7 +23,7 @@ class SigninSignupPage extends StatelessWidget {
 
               return Stack(
                 children: [
-                  /// Background Frame
+
                   Positioned(
                     top: 0,
                     left: 0,
@@ -35,7 +35,6 @@ class SigninSignupPage extends StatelessWidget {
                     ),
                   ),
 
-                  /// Top Logo
                   Positioned(
                     top: screenHeight * 0.06,
                     left: 0,
@@ -49,7 +48,7 @@ class SigninSignupPage extends StatelessWidget {
                     ),
                   ),
 
-                  /// Center Image
+
                   Positioned(
                     top: screenHeight * 0.22,
                     left: screenWidth * 0.15,
@@ -60,7 +59,7 @@ class SigninSignupPage extends StatelessWidget {
                     ),
                   ),
 
-                  /// Bottom Content
+
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
@@ -92,7 +91,7 @@ class SigninSignupPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 60),
 
-                          /// FIXED BUTTON SECTION
+
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 24),
                             child: SizedBox(
