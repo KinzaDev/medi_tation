@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medi/screens/Reminders.dart';
+import 'package:medi/screens/reminders.dart';
 
 class ChooseTopic extends StatelessWidget {
   const ChooseTopic({super.key});
