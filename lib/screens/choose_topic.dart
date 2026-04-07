@@ -194,8 +194,8 @@ class ChooseTopic extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const Reminders()),
                   );
                 },
-                splashColor: Colors.white.withOpacity(0.3),
-                highlightColor: Colors.white.withOpacity(0.1),
+                splashColor: Colors.white.withValues(alpha: 0.3),
+                highlightColor: Colors.white.withValues(alpha: 0.1),
                 child: const SizedBox.expand(),
               ),
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:medi/screens/home.dart';
 class Reminders extends StatefulWidget {
   const Reminders({super.key});
 
@@ -133,7 +133,12 @@ class _RemindersState extends State<Reminders> {
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Home()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF8E97FD),
                     shape: RoundedRectangleBorder(
@@ -155,7 +160,12 @@ class _RemindersState extends State<Reminders> {
               const SizedBox(height: 15),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Home()),
+                    );
+                  },
                   child: const Text(
                     'NO THANKS',
                     style: TextStyle(
