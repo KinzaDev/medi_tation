@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
               Row(
                 children: [
                   Expanded(
-                    child: _buildSmallCard(
+                    child: _cards(
                       "Focus",
                       "MEDITATION • 3-10 MIN",
                       'assets/images/home_page_3.png',
@@ -109,7 +109,7 @@ class _HomeState extends State<Home> {
                   ),
                   const SizedBox(width: 20),
                   Expanded(
-                    child: _buildSmallCard(
+                    child: _cards(
                       "Happiness",
                       "MEDITATION • 3-10 MIN",
                       'assets/images/home_page_4.png',
@@ -176,28 +176,30 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildSmallCard(
+  Widget _cards(
     String title,
     String desc,
     String img,
     Color boxColor,
   ) {
     return Container(
+      width: 162,
+
       margin: const EdgeInsets.only(right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Background Box for Image
           Container(
-            height: 130,
-            width: 210,
+            height: 113,
+            width: 162,
             decoration: BoxDecoration(
               color: boxColor,
               borderRadius: BorderRadius.circular(15),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(img, fit: BoxFit.contain),
+              child: Image.asset(img, fit: BoxFit.fill),
             ),
           ),
 
