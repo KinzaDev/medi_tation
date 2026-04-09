@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:medi/screens/meditation.dart';
+import 'package:medi/screens/music_v2.dart';
+import '../screens/home.dart';
+
+
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -22,24 +27,44 @@ class CustomBottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildNavItem(0, 'assets/images/home .png', 'Home'),
-            _buildNavItem(1, 'assets/images/moon.png', 'Sleep'),
-            _buildNavItem(2, 'assets/images/App (2).png', 'Meditate'),
-            _buildNavItem(3, 'assets/images/music.png', 'Music'),
-            _buildNavItem(4, 'assets/images/profile.png', 'Afsar'),
+            _buildNavItem(context, 0, 'assets/images/home .png', 'Home'),
+            _buildNavItem(context, 1, 'assets/images/moon.png', 'Sleep'),
+            _buildNavItem(context, 2, 'assets/images/App (2).png', 'Meditate'),
+            _buildNavItem(context, 3, 'assets/images/music.png', 'Music'),
+            _buildNavItem(context, 4, 'assets/images/profile.png', 'Afsar'),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildNavItem(int index, String assetPath, String label) {
+  Widget _buildNavItem(BuildContext context, int index, String assetPath, String label) {
     final bool isSelected = currentIndex == index;
     final Color activeColor = const Color(0xFF8E97FD);
     final Color inactiveColor = Colors.grey;
 
     return GestureDetector(
-      onTap: () => onTap(index),
+      onTap: () {
+        onTap(index);
+        Widget nextScreen;
+        switch (index) {
+          case 0:
+            nextScreen = const Home();
+            break;
+          case 2:
+            nextScreen = const MeditateScreen();
+            break;
+          case 3:
+            nextScreen = const MusicV2();
+            break;
+          default:
+            nextScreen = const Home();
+        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => nextScreen),
+        );
+      },
       behavior: HitTestBehavior.opaque,
       child: Column(
         mainAxisSize: MainAxisSize.min,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medi/Widgets/home_page_widgets.dart';
-
+import 'package:medi/screens/basic_course.dart';
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -63,7 +63,12 @@ class _HomeState extends State<Home> {
                       btnColor: const Color(0xFFEBEAEC),
                       btnTextColor: const Color(0xFF3F414E),
                       imagePath: 'assets/images/home_page_1.png',
-                      onStartTap: () {},
+                      onStartTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Course()),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(width: 20),
@@ -77,7 +82,9 @@ class _HomeState extends State<Home> {
                       btnColor: const Color(0xFF3F414E),
                       btnTextColor: Colors.white,
                       imagePath: 'assets/images/home_page_2.png',
-                      onStartTap: () {},
+                      onStartTap: () {
+
+                      },
                     ),
                   ),
                 ],
