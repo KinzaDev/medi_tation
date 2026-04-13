@@ -78,7 +78,7 @@ class _CourseState extends State<Course> {
                     ),
                     const SizedBox(height: 15),
                     const Text(
-                      'Ease the mind into a restful night’s sleep with these deep, ambient tones.',
+                      'Ease the mind into a restful night’s welcome_sleep with these deep, ambient tones.',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,

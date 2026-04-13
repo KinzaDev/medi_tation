@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medi/screens/meditation.dart';
 import 'package:medi/screens/music_v2.dart';
 import '../screens/home.dart';
+import 'package:medi/screens/welcome_sleep.dart';
 
 
 
@@ -51,13 +52,16 @@ class CustomBottomNavBar extends StatelessWidget {
           case 0:
             nextScreen = const Home();
             break;
+          case 1:
+            nextScreen = const WelcomeSleep();
+            break;
           case 2:
             nextScreen = const MeditateScreen();
             break;
           case 3:
             nextScreen = const MusicV2();
             break;
-          default:
+            default:
             nextScreen = const Home();
         }
         Navigator.push(
