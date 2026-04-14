@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi/screens/sleep.dart';
 
 class WelcomeSleep extends StatelessWidget {
   const WelcomeSleep({super.key});
@@ -15,7 +16,14 @@ class WelcomeSleep extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
+           Align(
+             alignment: AlignmentGeometry.xy(0.4, -0.8),
+             child:
+             Image.asset(
+              'assets/images/welcome_sleep/image.png',
+              fit: BoxFit.cover,
+            ),
+           ),
           SafeArea(
             child: Column(
               children: [
@@ -70,7 +78,12 @@ class WelcomeSleep extends StatelessWidget {
                     width: double.infinity,
                     height: 60,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Sleep()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF8E97FD),
                         shape: RoundedRectangleBorder(

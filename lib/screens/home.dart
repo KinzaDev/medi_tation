@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medi/Widgets/home_page_widgets.dart';
 import 'package:medi/screens/basic_course.dart';
-import 'package:medi/screens/welcome_sleep.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -24,6 +24,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

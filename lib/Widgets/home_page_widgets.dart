@@ -5,24 +5,26 @@ import '../screens/home.dart';
 import 'package:medi/screens/welcome_sleep.dart';
 
 
-
+//bottom bar
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final Color backgroundColor;
 
   const CustomBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+  this.backgroundColor = Colors.white,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        border: Border(top: BorderSide(color: Color(0xFFE6E6E6), width: 0.5)),
+      decoration: BoxDecoration(
+        color:backgroundColor,
+        border: const Border(top: BorderSide(color: Color(0xFFE6E6E6), width: 0.5)),
       ),
       child: SafeArea(
         child: Row(
@@ -203,7 +205,6 @@ class ActionCard extends StatelessWidget {
     );
   }
 }
-
 class ActionCard1 extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -302,6 +303,150 @@ class ActionCard1 extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+// upper bar
+class SleepCategoryBar extends StatelessWidget {
+  final String selectedCategory;
+  final Function(String) onCategorySelected;
+
+  const SleepCategoryBar({
+    super.key,
+    required this.selectedCategory,
+    required this.onCategorySelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          _buildCategoryItem('All', 'assets/images/meditate/all.png'),
+          _buildCategoryItem('My', 'assets/images/meditate/heart.png'),
+          _buildCategoryItem('Anxious', 'assets/images/meditate/emoji.png'),
+          _buildCategoryItem('Sleep', 'assets/images/meditate/sleep.png'),
+          _buildCategoryItem('Kids', 'assets/images/meditate/face.png'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCategoryItem(String label, String iconPath) {
+    bool isSelected = selectedCategory == label;
+
+    return GestureDetector(
+      onTap: () => onCategorySelected(label),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 15),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? const Color(0xFF8E97FD)
+                    : const Color(0xFF586894),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Image.asset(
+                iconPath,
+                width: 25,
+                height: 25,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.white60,
+                fontSize: 13,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+// sleep cards
+class SleepCard extends StatelessWidget {
+  final String title;
+  final String duration;
+  final String type;
+  final String imagePath;
+  final VoidCallback onTap;
+
+  const SleepCard({
+    super.key,
+    required this.title,
+    required this.duration,
+    required this.type,
+    required this.imagePath,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        SizedBox(
+          height: 120,
+          width: double.infinity,
+          child: Stack(
+            children: [
+
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+
+              Positioned.fill(
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(15),
+                    onTap: onTap,
+                    splashColor: Colors.black12,
+                    highlightColor: Colors.black.withValues(alpha: 0.05),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 15),
+
+        Text(
+          title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          '$duration • $type',
+          style: const TextStyle(
+            color: Colors.white70,
+            fontSize: 11,
+          ),
+        ),
+      ],
     );
   }
 }
